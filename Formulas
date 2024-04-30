@@ -1,1 +1,18 @@
-
+# Change Column titles of all column names (Syntax should be followed to add special character between the words)
+ALTER TABLE allergies RENAME COLUMN c1 TO Start;
+ALTER TABLE allergies RENAME COLUMN c2 TO Stop;
+ALTER TABLE allergies RENAME COLUMN c3 TO Patient;
+ALTER TABLE allergies RENAME COLUMN c4 TO Encounter;
+ALTER TABLE allergies RENAME COLUMN c5 TO Code;
+ALTER TABLE allergies RENAME COLUMN c6 TO Datasource;
+ALTER TABLE allergies RENAME COLUMN c7 TO Culprit_Product;
+ALTER TABLE allergies RENAME COLUMN c8 TO Type;
+ALTER TABLE allergies RENAME COLUMN c9 TO Category;
+ALTER TABLE allergies RENAME COLUMN c10 TO Reaction_Type_1;
+ALTER TABLE allergies RENAME COLUMN c11 TO Reaction_1;
+ALTER TABLE allergies RENAME COLUMN c12 TO Severity_1;
+ALTER TABLE allergies RENAME COLUMN c13 TO Reaction_Type_2;
+ALTER TABLE allergies RENAME COLUMN c14 TO Reaction_2;
+ALTER TABLE allergies RENAME COLUMN c15 TO Severity_2;
+# Query all rows and columns from a table
+SELECT * FROM allergies;
