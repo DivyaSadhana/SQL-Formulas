@@ -1,4 +1,4 @@
-# Change Column titles of all column names (Syntax should be followed to add special character between the words)
+# Change Column titles of all column names in Allergies Table (Syntax should be followed to add special character between the words)
 ALTER TABLE allergies RENAME COLUMN c1 TO Start;
 ALTER TABLE allergies RENAME COLUMN c2 TO Stop;
 ALTER TABLE allergies RENAME COLUMN c3 TO Patient;
@@ -23,6 +23,33 @@ select Start,Category from allergies where Category='food';
 
 # Query distinct rows from a table
 Show Unique Start Dates of medication based allergies. 
+
+# Change Column titles of all column names in Patients Table
+ALTER TABLE patients RENAME COLUMN c1 TO ID;
+ALTER TABLE patients RENAME COLUMN c2 TO Birth_Date;
+ALTER TABLE patients RENAME COLUMN c3 TO Death_Date;
+ALTER TABLE patients RENAME COLUMN c4 TO SSN;
+ALTER TABLE patients RENAME COLUMN c5 TO Drivers;
+ALTER TABLE patients RENAME COLUMN c6 TO Passport;
+ALTER TABLE patients RENAME COLUMN c7 TO Prefix;
+ALTER TABLE patients RENAME COLUMN c8 TO First_Credential;
+ALTER TABLE patients RENAME COLUMN c9 TO Last_Credential;
+ALTER TABLE patients RENAME COLUMN c10 TO Suffix;
+ALTER TABLE patients RENAME COLUMN c11 TO Maiden;
+ALTER TABLE patients RENAME COLUMN c12 TO Married;
+ALTER TABLE patients RENAME COLUMN c13 TO Race;
+ALTER TABLE patients RENAME COLUMN c14 TO Ethnicity;
+ALTER TABLE patients RENAME COLUMN c15 TO Gender;
+ALTER TABLE patients RENAME COLUMN c15 TO Birthplace;
+ALTER TABLE patients RENAME COLUMN c15 TO Address;
+ALTER TABLE patients RENAME COLUMN c15 TO City; 
+ALTER TABLE patients RENAME COLUMN c15 TO State; 
+ALTER TABLE patients RENAME COLUMN c15 TO County; 
+ALTER TABLE patients RENAME COLUMN c15 TO Zip; 
+ALTER TABLE patients RENAME COLUMN c15 TO Latitude; 
+ALTER TABLE patients RENAME COLUMN c15 TO Longitude; 
+ALTER TABLE patients RENAME COLUMN c15 TO Healthcare_Expenses; 
+ALTER TABLE patients RENAME COLUMN c15 TO Healthcare_Coverage; 
 select DISTINCT Start from allergies where Category='medication';
 
 # Sort the result set in Ascending order
