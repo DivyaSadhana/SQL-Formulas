@@ -69,3 +69,14 @@ ALTER TABLE imaging_studies RENAME COLUMN c10 TO Instance_UID;
 ALTER TABLE imaging_studies RENAME COLUMN c11 TO Storage_Code;
 ALTER TABLE imaging_studies RENAME COLUMN c12 TO Storage_Description;
 ALTER TABLE imaging_studies RENAME COLUMN c13 TO Procedure_Code;
+
+# Change Column titles of all column names in Observations table
+ALTER TABLE observations RENAME COLUMN c1 TO Date;
+ALTER TABLE observations RENAME COLUMN c2 TO ID;
+ALTER TABLE observations RENAME COLUMN c3 TO Encounter;
+ALTER TABLE observations RENAME COLUMN c4 TO Observations_Category;
+ALTER TABLE observations RENAME COLUMN c5 TO ObservationsCode;
+ALTER TABLE observations RENAME COLUMN c6 TO VitalSigns_Description;
+ALTER TABLE observations RENAME COLUMN c7 TO VitalSigns_Value;
+ALTER TABLE observations RENAME COLUMN c8 TO VitalSigns_Units;
+ALTER TABLE observations RENAME COLUMN c9 TO VitalSigns_ValueType;
