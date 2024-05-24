@@ -40,17 +40,16 @@ ALTER TABLE patients RENAME COLUMN c12 TO Married;
 ALTER TABLE patients RENAME COLUMN c13 TO Race;
 ALTER TABLE patients RENAME COLUMN c14 TO Ethnicity;
 ALTER TABLE patients RENAME COLUMN c15 TO Gender;
-ALTER TABLE patients RENAME COLUMN c15 TO Birthplace;
-ALTER TABLE patients RENAME COLUMN c15 TO Address;
-ALTER TABLE patients RENAME COLUMN c15 TO City; 
-ALTER TABLE patients RENAME COLUMN c15 TO State; 
-ALTER TABLE patients RENAME COLUMN c15 TO County; 
-ALTER TABLE patients RENAME COLUMN c15 TO Zip; 
-ALTER TABLE patients RENAME COLUMN c15 TO Latitude; 
-ALTER TABLE patients RENAME COLUMN c15 TO Longitude; 
-ALTER TABLE patients RENAME COLUMN c15 TO Healthcare_Expenses; 
-ALTER TABLE patients RENAME COLUMN c15 TO Healthcare_Coverage; 
-select DISTINCT Start from allergies where Category='medication';
+ALTER TABLE patients RENAME COLUMN c16 TO Birthplace;
+ALTER TABLE patients RENAME COLUMN c17 TO Address;
+ALTER TABLE patients RENAME COLUMN c18 TO City; 
+ALTER TABLE patients RENAME COLUMN c19 TO State; 
+ALTER TABLE patients RENAME COLUMN c20 TO County; 
+ALTER TABLE patients RENAME COLUMN c21 TO Zip; 
+ALTER TABLE patients RENAME COLUMN c22 TO Latitude; 
+ALTER TABLE patients RENAME COLUMN c23 TO Longitude; 
+ALTER TABLE patients RENAME COLUMN c24 TO Healthcare_Expenses; 
+ALTER TABLE patients RENAME COLUMN c25 TO Healthcare_Coverage; 
 
 # Sort the result set in Ascending order
 select culprit_product,Start from allergies 
