@@ -55,4 +55,17 @@ ALTER TABLE patients RENAME COLUMN c23 TO Longitude;
 ALTER TABLE patients RENAME COLUMN c24 TO Healthcare_Expenses; 
 ALTER TABLE patients RENAME COLUMN c25 TO Healthcare_Coverage; 
 
-
+# Change Column titles of all column names in Imaging Studies Table
+ALTER TABLE imaging_studies RENAME COLUMN c1 TO ID;
+ALTER TABLE imaging_studies RENAME COLUMN c2 TO Date;
+ALTER TABLE imaging_studies RENAME COLUMN c3 TO PatientNumber;
+ALTER TABLE imaging_studies RENAME COLUMN c4 TO Encounter;
+ALTER TABLE imaging_studies RENAME COLUMN c5 TO Series_UID;
+ALTER TABLE imaging_studies RENAME COLUMN c6 TO BodySiteCode;
+ALTER TABLE imaging_studies RENAME COLUMN c7 TO Body_Site;
+ALTER TABLE imaging_studies RENAME COLUMN c8 TO Image_Code;
+ALTER TABLE imaging_studies RENAME COLUMN c9 TO Image_Description;
+ALTER TABLE imaging_studies RENAME COLUMN c10 TO Instance_UID;
+ALTER TABLE imaging_studies RENAME COLUMN c11 TO Storage_Code;
+ALTER TABLE imaging_studies RENAME COLUMN c12 TO Storage_Description;
+ALTER TABLE imaging_studies RENAME COLUMN c13 TO Procedure_Code;
