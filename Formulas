@@ -21,6 +21,10 @@ SELECT * FROM allergies;
 # Retrieve Start Dates for food allergies
 select Start,Category from allergies where Category='food';
 
+# Sort the result set in Ascending order
+select culprit_product,Start from allergies 
+order BY Start;
+
 # Query distinct rows from a table
 Show Unique Start Dates of medication based allergies. 
 
@@ -51,6 +55,4 @@ ALTER TABLE patients RENAME COLUMN c23 TO Longitude;
 ALTER TABLE patients RENAME COLUMN c24 TO Healthcare_Expenses; 
 ALTER TABLE patients RENAME COLUMN c25 TO Healthcare_Coverage; 
 
-# Sort the result set in Ascending order
-select culprit_product,Start from allergies 
-order BY Start;
+
