@@ -15,18 +15,6 @@ ALTER TABLE allergies RENAME COLUMN c13 TO Reaction_Type_2;
 ALTER TABLE allergies RENAME COLUMN c14 TO Reaction_2;
 ALTER TABLE allergies RENAME COLUMN c15 TO Severity_2;
 
-# Query all rows and columns from a table
-SELECT * FROM allergies;
-
-# Retrieve Start Dates for food allergies
-select Start,Category from allergies where Category='food';
-
-# Sort the result set in Ascending order
-select culprit_product,Start from allergies 
-order BY Start;
-
-# Query distinct rows from a table
-Show Unique Start Dates of medication based allergies. 
 
 # Change Column titles of all column names in Patients Table
 ALTER TABLE patients RENAME COLUMN c1 TO ID;
