@@ -1,4 +1,4 @@
-Use below codes to rename columns after downloading data files on your desktop 
+I used below codes to rename columns on SQLite data tables after importing these data files from my desktop. 
 
 # Change Column titles of all column names in Allergies Table (Syntax should be followed to add special character between the words)
 ALTER TABLE allergies RENAME COLUMN c1 TO Start;
