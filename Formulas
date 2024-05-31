@@ -65,8 +65,21 @@ ALTER TABLE observations RENAME COLUMN c1 TO Date;
 ALTER TABLE observations RENAME COLUMN c2 TO ID;
 ALTER TABLE observations RENAME COLUMN c3 TO Encounter;
 ALTER TABLE observations RENAME COLUMN c4 TO Observations_Category;
-ALTER TABLE observations RENAME COLUMN c5 TO ObservationsCode;
-ALTER TABLE observations RENAME COLUMN c6 TO VitalSigns_Description;
-ALTER TABLE observations RENAME COLUMN c7 TO VitalSigns_Value;
-ALTER TABLE observations RENAME COLUMN c8 TO VitalSigns_Units;
-ALTER TABLE observations RENAME COLUMN c9 TO VitalSigns_ValueType;
+
+# Change Column titles of all column names in Vitals table
+ALTER TABLE Vitals RENAME COLUMN c5 TO ObservationsCode;
+ALTER TABLE Vitals RENAME COLUMN c6 TO VitalSigns_Description;
+ALTER TABLE Vitals RENAME COLUMN c7 TO VitalSigns_Value;
+ALTER TABLE Vitals RENAME COLUMN c8 TO VitalSigns_Units;
+ALTER TABLE Vitals RENAME COLUMN c9 TO VitalSigns_ValueType;
+
+# We should use Order By clause initially followed by Group by clause. 
+#Reverse chronology throws error as the table woud get grouped with data having similar values then only it would accept to get sorted in ascending or descending order.
+# Table name is not needed before column names once using JOIN statement comes in place. 
+# Above logic happens as the JOIN cluase makes sure which clumn comes from which table. So unless there is syntax error, table names needed before using JOIN only. 
+select patients.city, province_names.province_name  
+from patients
+inner join province_names on patients.province_id=province_names.province_id
+where gender in ('M') and height > 40
+group by allergies having weight>50
+order by city;
