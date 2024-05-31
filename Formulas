@@ -83,3 +83,7 @@ inner join province_names on patients.province_id=province_names.province_id
 where gender in ('M') and height > 40
 group by allergies having weight>50
 order by city;
+
+# Use aggregations before table names followed by clumn names
+select distinct (patients.allergies), count(admissions.diagnosis) from patients 
+right join admissions on patients.patient_id=admissions.patient_id;
