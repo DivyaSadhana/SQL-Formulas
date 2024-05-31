@@ -1,0 +1,31 @@
+# Create new Data Table with Primary Key and Foreign key in relation to Allergies data table. Medicines column should not be null.
+Create Table Data 
+(ID INT Primary Key,
+Hospital_Name VARCHAR,
+Date_of_Admission Date,
+Medicines VARCHAR NOTNULL,
+Foreign Key (Date_of_Admission), References Allergies(Date_of_Admission);
+
+# Add another column to the newly created table
+ALTER TABLE Data Add Medcicnes 1;
+
+#Add 3 rows to the table 
+INSERT INTO Medicines (ID, Hospital_Name, Date_of_Admission, Medicines)
+Values (1, Sakra, 14/10/2024, Paracetamol)
+(2, Rainbow, 20/5/2024, Panadol)
+(3, Vivan, 6/6/2024, Tramadol)
+
+# Delete the recently added column 
+ALTER TABLE Data Drop Medicines 1;
+
+# Rename the table from Data to Hospital Details
+ALTER TABLE Data RENAME TO Hospital_Details;
+
+# Rename column Medicines to Medications
+ALTER TABLE Data Rename Medicines TO Medications;
+
+#Remove all rows in data table but retain column names
+TRUNCATE TABLE Data;
+
+# Delete the data table
+DROP TABLE Hospital_Details;
