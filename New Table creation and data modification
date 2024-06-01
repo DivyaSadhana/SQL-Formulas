@@ -34,7 +34,6 @@ TRUNCATE TABLE Data;
 # Delete all rows in data table by retaining column namnes
 DELETE TABLE Hospital_Details;
 
-
 # Delete the entire data table permanently from SQL server. DROP functionality output cannot be rolled back
 DROP TABLE Hospital_Details;
 
@@ -43,5 +42,14 @@ Create TABLE Dummy
 AS Select * From Hospital_Details;
 
 # Add rows from Hospital table to Dummy Table
-insert into Dummy2 (ID, Name, date_of_adnission, BMI, Medicines)
+INSERT INTO Dummy2 (ID, Name, date_of_adnission, BMI, Medicines)
 select ID, Name, date_of_adnission, BMI, Medicines from Data;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Patients Table : Patient ID, First Name, Last Name, Gender, Birth Date, City, Province ID, Allergies, Height, Weight.
+Province Names: Province ID, Province Name
+
+# Replace all null values in allergies column with NKA. 
+UPDATE Patients
+SET allergies = 'NKA' where allergies ISNULL;
