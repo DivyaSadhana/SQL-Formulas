@@ -142,3 +142,20 @@ WHERE diagnosis = 'Dementia';
 SELECT first_name from patients 
 order by len(first_name), first_name;
 
+# Show the total amount of male patients and the total amount of female patients in the patients table. Display the two results in the same row.
+SELECT 
+  SUM(Gender = 'M') as male_count, 
+  SUM(Gender = 'F') AS female_count
+FROM patients;
+
+or use below logic for same purpose
+select 
+  sum(case when gender = 'M' then 1 end) as male_count,
+  sum(case when gender = 'F' then 1 end) as female_count 
+from patients;
+
+# Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. 
+# Show results ordered ascending by allergies then by first_name then by last_name.
+select first_name, last_name, allergies from patients
+where allergies in ('Penicillin') or allergies in ('Morphine')
+order by allergies, first_name, last_name
