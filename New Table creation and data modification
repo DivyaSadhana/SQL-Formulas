@@ -29,3 +29,7 @@ TRUNCATE TABLE Data;
 
 # Delete the data table
 DROP TABLE Hospital_Details;
+
+# Create Dummy table same as Hospital_Details (or) insert all columns, rows from Hospital_Details table to Dummy table.
+Create TABLE Dummy
+AS Select * From Hospital_Details;
