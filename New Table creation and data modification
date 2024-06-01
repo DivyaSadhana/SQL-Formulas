@@ -159,3 +159,15 @@ from patients;
 select first_name, last_name, allergies from patients
 where allergies in ('Penicillin') or allergies in ('Morphine')
 order by allergies, first_name, last_name
+
+# Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+SELECT patient_id, diagnosis FROM admissions
+GROUP BY patient_id, diagnosis
+HAVING COUNT(diagnosis) > 1;
+
+# Show the city and the total number of patients in the city.
+#Order from most to least patients and then by city name ascending.
+SELECT city, COUNT(patient_id) AS num_patients FROM patients
+GROUP BY city
+ORDER BY num_patients DESC, city;
+  
