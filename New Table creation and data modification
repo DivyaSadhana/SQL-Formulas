@@ -170,4 +170,18 @@ HAVING COUNT(diagnosis) > 1;
 SELECT city, COUNT(patient_id) AS num_patients FROM patients
 GROUP BY city
 ORDER BY num_patients DESC, city;
-  
+
+# Show first name, last name and role of every person that is either patient or doctor. The roles are either "Patient" or "Doctor"
+Hint: UNION All does not remove duplicates. This is the difference between full outer join which removes duplicates acros the the tables.
+SELECT first_name, last_name, 'Patient' as role FROM patients
+    union all
+select first_name, last_name, 'Doctor' from doctors;
+
+# Show all allergies ordered by popularity. Remove NULL values from query.
+SELECT allergies, count(allergies) from patients
+where allergies is not null
+group by allergies
+order by count(allergies) desc
+
+
+
