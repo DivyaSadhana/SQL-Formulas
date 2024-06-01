@@ -24,10 +24,18 @@ ALTER TABLE Data RENAME TO Hospital_Details;
 # Rename column Medicines to Medications
 ALTER TABLE Data Rename Medicines TO Medications;
 
+# Delete specific rows. Delete record for the patient who used Tramadol drug.
+DELETE FROM Hospital_Details
+where Medicines = 'Tramadol';
+
 #Remove all rows in data table but retain column names
 TRUNCATE TABLE Data;
 
-# Delete the data table
+# Delete all rows in data table by retaining column namnes
+DELETE TABLE Hospital_Details;
+
+
+# Delete the entire data table permanently from SQL server. DROP functionality output cannot be rolled back
 DROP TABLE Hospital_Details;
 
 # Create Dummy table same as Hospital_Details (or) insert all columns, rows from Hospital_Details table to Dummy table.
