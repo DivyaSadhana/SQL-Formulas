@@ -53,3 +53,21 @@ Province Names: Province ID, Province Name
 # Replace all null values in allergies column with NKA. 
 UPDATE Patients
 SET allergies = 'NKA' where allergies ISNULL;
+
+# Show first name and last name merged into one column to show their full name. 
+Hint: Give space between special charecters ' ' to generate space between first name and last name.
+SELECT
+CONCAT(first_name,' ',last_name) AS full_name
+FROM patients;
+
+Or use below formla also for concatenate purpose.
+SELECT first_name || ' ' || last_name
+FROM patients;
+
+#Show first name, last name, and the full province name of each patient.
+SELECT
+  first_name,
+  last_name,
+  province_names.province_name
+FROM patients
+  left join province_names ON province_names.province_id = patients.province_id;
