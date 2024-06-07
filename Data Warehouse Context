@@ -19,3 +19,6 @@ Semantic models are automatically kept in sync with the data warehouse, so you d
 Hence the customic semantic models created based on specific business requirements would get updated automatcally.
 Users can also manually select tables or views from the warehouse they want included in the model for more flexibility. 
 Objects that are in the default semantic model are created as a layout in the model view.
+
+# When you display a dataframe or run a SQL query in a Spark notebook, the results are displayed under the code cell can be viewed in Table format or Chart format (Data Visualization). 
+By default, results are rendered as a table, but you can also change the results view to a chart and use the chart properties to customize how the chart visualizes the data, as shown here:
