@@ -11,3 +11,8 @@ You can also use staging tables to load data from multiple sources into a single
 # Measures are calculated columns that are based on the data in the tables in your data warehouse using the Data Analysis Expressions (DAX) formula language.
 
 # Relationships allow you to connect tables in the semantic model. Create relationships between tables in your data warehouse using a click-and-drag interface in Fabric in the Model view.
+Cardinality helps to maintain One-One, One-Many, Many-One, Many-Many relationships.
+
+# Every time a data warehouse is created, Fabric creates a semantic model (which consists of metrics) for analysts and/or business users to connect to for report creation.
+Semantic models are automatically kept in sync with the data warehouse, so you don't have to worry about maintaining them. 
+Hence the customic semantic models created based on specific business requirements would get updated automatcally.
