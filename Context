@@ -7,3 +7,7 @@ You can also use staging tables to load data from multiple sources into a single
 3. Load the dimension tables from the dimension data in the staging tables, updating existing rows or inserting new rows and generating surrogate key values as necessary.
 4. Load the fact tables from the fact data in the staging tables, looking up the appropriate surrogate keys for related dimensions.
 5. Perform post-load optimization by updating indexes and table distribution statistics.
+
+# Measures are calculated columns that are based on the data in the tables in your data warehouse using the Data Analysis Expressions (DAX) formula language.
+
+# Relationships allow you to connect tables in the semantic model. Create relationships between tables in your data warehouse using a click-and-drag interface in Fabric in the Model view.
