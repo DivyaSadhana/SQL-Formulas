@@ -14,5 +14,8 @@ You can also use staging tables to load data from multiple sources into a single
 Cardinality helps to maintain One-One, One-Many, Many-One, Many-Many relationships.
 
 # Every time a data warehouse is created, Fabric creates a semantic model (which consists of metrics) for analysts and/or business users to connect to for report creation.
+New tables in the Lakehouse are automatically added to the default semantic model. 
 Semantic models are automatically kept in sync with the data warehouse, so you don't have to worry about maintaining them. 
 Hence the customic semantic models created based on specific business requirements would get updated automatcally.
+Users can also manually select tables or views from the warehouse they want included in the model for more flexibility. 
+Objects that are in the default semantic model are created as a layout in the model view.
