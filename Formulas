@@ -1,1 +1,28 @@
-# 
+# Exrtract CSV table from Blob Storage in Microsoft Fabric and Load into Datawarehouse (ELT concept)
+
+COPY INTO dbo.Region 
+FROM 'https://mystorageaccountxxx.blob.core.windows.net/private/Region.csv' WITH ( 
+            FILE_TYPE = 'CSV'
+            ,CREDENTIAL = ( 
+                IDENTITY = 'Shared Access Signature'
+                , SECRET = 'xxx'
+                )
+            ,FIRSTROW = 2
+            )
+GO
+
+# Meaning for the logic:
+COPY INTO dbo.Region: This specifies that data will be copied into the Region table in the dbo schema.
+FROM 'https://mystorageaccountxxx.blob.core.windows.net/private/Region.csv': This indicates the source of the data. 
+It’s a CSV file located at the provided URL.
+FILE_TYPE = 'CSV': Specifies that the file is in CSV format.
+CREDENTIAL = (IDENTITY = 'Shared Access Signature', SECRET = 'xxx'): Refers to the credentials needed to access the file. 
+In this case, it’s using a shared access signature (SAS) with the provided secret.
+FIRSTROW = 2: Indicates that the first row of the CSV file contains column headers, so data extraction should start from the second row.
+GO: This is a batch separator in SQL Server. It marks the end of the current batch of statements.
+
+#Skeleton logic for above code
+COPY INTO SchemaName.TableName
+FROM 'Source_Path.FileFormat' WITH 
+(File_Type = '--', Credential = (Identity= '--', Secret = '--'), Firstrow = 2)
+GO
