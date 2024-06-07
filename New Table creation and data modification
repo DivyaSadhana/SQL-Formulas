@@ -199,4 +199,10 @@ order by city;
 select distinct (patients.allergies), count(admissions.diagnosis) from patients 
 right join admissions on patients.patient_id=admissions.patient_id;
 
+# Change Column titles of all column names in Observations table
+ALTER TABLE observations RENAME COLUMN c1 TO Date;
+ALTER TABLE observations RENAME COLUMN c2 TO ID;
+ALTER TABLE observations RENAME COLUMN c3 TO Encounter;
+ALTER TABLE observations RENAME COLUMN c4 TO Observations_Category;
+
 
