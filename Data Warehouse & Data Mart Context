@@ -29,6 +29,7 @@ This code could generate Pie Chart Visualization on Spark Notebook.
 # Datamarts are recommended for customers who need domain oriented, decentralized data ownership and architecture, 
 such as users who need data as a product or a self-service data platform.
 Datamarts are a fully managed database that enables you to store and explore your data in a relational and fully managed Azure SQL DB.
+Incremental refresh extends scheduled refresh operations by providing automated partition creation and management for datamart tables that frequently load new and updated data.
 For most datamarts, incremental refresh will involve one or more tables that contain transaction data that changes often and can grow exponentially, such as a fact table in a relational or star database schema. 
 If you use an incremental refresh policy to partition the table, and refresh only the most recent import partitions, you can significantly reduce the amount of data that must be refreshed.
 
