@@ -46,12 +46,23 @@ WHERE employee_rank <= 3;
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-# Pull the details of employee who earns 2nd highest salary in the department
+# Pull the details of employee who earns 2nd highest salary in the department.
+# Using Row_number as window function in this scenario.
 
 SELECT *
 FROM (
     SELECT employees.*,
            ROW_NUMBER() OVER (ORDER BY salary DESC) AS employee_rank
+    FROM employees
+)
+WHERE employee_rank = 2;
+-------------------------------------------------------------------------------------------------------------------------------------
+# Find employees who draws same salary
+Use Dense_Rank as Window function.
+SELECT *
+FROM (
+    SELECT employees.*,
+           DENSE_RANK() OVER (ORDER BY salary DESC) AS employee_rank
     FROM employees
 )
 WHERE employee_rank = 2;
