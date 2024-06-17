@@ -176,3 +176,12 @@ SELECT CASE
            ELSE column_name 
        END 
 FROM table_name;
+---------------------------------------------------------------------------------------------------------------------------------
+# Write a query to fetch employees who joined in last 30days
+
+Select * From Employees
+Where JOINING_DATE >= DATEADD(DAYS, -30, GETDATE());
+
+The DATEADD function subtracts 30 days from the current date, which is obtained by GETDATE(), to find employees who joined in this period.
+
+----------------------------------------------------------------------------------------------------------------------------
