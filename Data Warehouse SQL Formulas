@@ -154,3 +154,25 @@ FROM employees
 If you want to include all columns from the Employee table in the CTE, you can certainly use e.*. However, be cautious and ensure that all columns are relevant to your task.
 If you only need specific columns (as in our example), explicitly listing them is a good practice for clarity and maintainability.
 Remember that the choice between specifying individual columns and using e.* depends on your specific requirements and the context of your query
+
+----------------------------------------------------------------------------------------
+# How to handle null values
+
+1. Filtering with NULL Values:
+Use the IS NULL or IS NOT NULL operators to filter rows based on null values.
+Avoid using comparison operators (=, !=, <, >, etc.) with nulls, as they will not work as expected.
+
+2. Coalescing NULL Values:
+Use the COALESCE() function to replace nulls with a default value.
+For example: SELECT COALESCE(column_name, 'default_value') FROM table_name;
+
+3. Conditional Logic:
+Use the CASE statement to handle nulls in a conditional logic.
+For example:
+SQL
+
+SELECT CASE 
+           WHEN column_name IS NULL THEN 'default_value' 
+           ELSE column_name 
+       END 
+FROM table_name;
