@@ -26,3 +26,20 @@ COPY INTO SchemaName.TableName
 FROM 'Source_Path.FileFormat' WITH 
 (File_Type = '--', Credential = (Identity= '--', Secret = '--'), Firstrow = 2)
 GO
+
+----------------------------------------------------------------------
+
+# Pull top 3 employees who draws highest salary
+
+This is written as inner query to retrive all columns (employee .*) in the employee table based on first line logic. 
+The second line represents create unique row for each department and sort salary in descending order.
+SELECT employees.*,
+       ROW_NUMBER() OVER (PARTITION BY department_id ORDER BY salary DESC) AS employee_rank
+FROM employees;
+
+Now use both outer query and inner query to retieve top 3 highest salaried employees from each department.
+SELECT * FROM (
+    SELECT employees.*,
+           ROW_NUMBER() OVER (PARTITION BY department_id ORDER BY salary DESC) AS employee_rank
+    FROM employees) 
+WHERE employee_rank <= 3;
