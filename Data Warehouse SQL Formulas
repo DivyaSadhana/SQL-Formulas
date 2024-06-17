@@ -66,3 +66,23 @@ FROM (
     FROM employees
 )
 WHERE employee_rank = 2;
+
+----------------------------------------------------------------------------------------------------------------------------------------
+ # Retrieve the top 5 employees with the highest salary
+SELECT *
+FROM employees
+ORDER BY salary DESC
+LIMIT 5;
+-----------------------------------------------------------------------------------------------------------------------------------
+
+# Retrieve employees in batches of 5, starting from the 6th employee (i.e., skip the first 5 employees)
+SELECT *
+FROM employees
+ORDER BY salary DESC
+LIMIT 5 OFFSET 5;
+
+# In the same scenario, if we give Limit 10 Offset 5, then out of total 15 rows the output results skips first 5 rows 
+and pulls the data from row number 6 to row number 14 by skipping first 5 rows.
+
+# In the same logic if we set Limit to 5 and offset to 10, then the final results pull total 5 rows in data table
+from row 11 to row 15 by skipping first 10 rows.
