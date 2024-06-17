@@ -44,6 +44,18 @@ SELECT * FROM (
     FROM employees) 
 WHERE employee_rank <= 3;
 
+# We can get same result by using different logic
+
+Select * From Employees
+Order By Salary DESC
+LIMIT 3;
+
+# Retrieve the top 5 employees with the highest salary
+SELECT *
+FROM employees
+ORDER BY salary DESC
+LIMIT 5;
+
 -------------------------------------------------------------------------------------------------------------------------------
 
 # Pull the details of employee who earns 2nd highest salary in the department.
@@ -56,24 +68,10 @@ FROM (
     FROM employees
 )
 WHERE employee_rank = 2;
--------------------------------------------------------------------------------------------------------------------------------------
-# Find employees who draws same salary
-Use Dense_Rank as Window function.
-SELECT *
-FROM (
-    SELECT employees.*,
-           DENSE_RANK() OVER (ORDER BY salary DESC) AS employee_rank
-    FROM employees
-)
-WHERE employee_rank = 2;
 
-----------------------------------------------------------------------------------------------------------------------------------------
- # Retrieve the top 5 employees with the highest salary
-SELECT *
-FROM employees
-ORDER BY salary DESC
-LIMIT 5;
------------------------------------------------------------------------------------------------------------------------------------
+Select * From Employees
+Order By Salary DESC
+LIMIT 1 OFFSET 1;
 
 # Retrieve employees in batches of 5, starting from the 6th employee (i.e., skip the first 5 employees)
 SELECT *
@@ -86,7 +84,20 @@ and pulls the data from row number 6 to row number 14 by skipping first 5 rows.
 
 # In the same logic if we set Limit to 5 and offset to 10, then the final results pull total 5 rows in data table
 from row 11 to row 15 by skipping first 10 rows.
---------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+# Find employees who draws same salary
+Use Dense_Rank as Window function.
+SELECT *
+FROM (
+    SELECT employees.*,
+           DENSE_RANK() OVER (ORDER BY salary DESC) AS employee_rank
+    FROM employees
+)
+WHERE employee_rank = 2;
+
+----------------------------------------------------------------------------------------------------------------------------------------
+ 
+
 # Pull first 10 employees in SQL server.
 
 SELECT TOP 10 * FROM Employees
@@ -97,7 +108,7 @@ ORDER BY Salary DESC;
 
 # Delete duplicate records of Employees in employee table
 
-Below is a wrong logic with Where cluase
+Below is a wrong logic with Where cluase which gives ERROR result.
 Select First_Name, Last_Name, Country, Count(*) From Employees
 Where Count(*) > 1;
 
@@ -119,7 +130,7 @@ With CTE AS
 (Select Employees.*,
 Row_Number() Over(Partition By FirstName, LastName, Country Order By EmployeeID) as Row_Number
 From Employees)
-Delete From Row_Number>1;
+Delete From CTE WHERE Row_Number>1;
 
 # Let’s break down the query to understand why we explicitly list the columns instead of using e.* in the Common Table Expression (CTE).
 
