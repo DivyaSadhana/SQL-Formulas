@@ -120,3 +120,26 @@ With CTE AS
 Row_Number() Over(Partition By FirstName, LastName, Country Order By EmployeeID) as Row_Number
 From Employees)
 Delete From Row_Number>1;
+
+# Let’s break down the query to understand why we explicitly list the columns instead of using e.* in the Common Table Expression (CTE).
+
+Column Selection in CTE:
+In the CTE, we explicitly specify the columns [FirstName], [LastName], and [Country]. 
+This is intentional because we want to create a temporary result set with only these specific columns.
+By doing so, we ensure that the subsequent DELETE operation affects only these columns and doesn’t inadvertently impact other columns in the table.
+
+# Using e.* in CTE:
+While it’s possible to use e.* (which would represent all columns from the Employee table) in the CTE, it’s generally better to be explicit about the columns you’re working with.
+Using e.* might lead to unintended consequences if there are additional columns in the Employee table that you don’t want to include in the CTE or affect during the deletion process.
+Explicitly listing the columns provides better control over the data you’re manipulating.
+
+SELECT employees.*,
+           ROW_NUMBER() OVER (ORDER BY salary DESC) AS employee_rank
+FROM employees
+
+
+
+# Considerations:
+If you want to include all columns from the Employee table in the CTE, you can certainly use e.*. However, be cautious and ensure that all columns are relevant to your task.
+If you only need specific columns (as in our example), explicitly listing them is a good practice for clarity and maintainability.
+Remember that the choice between specifying individual columns and using e.* depends on your specific requirements and the context of your query
