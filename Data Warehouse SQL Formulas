@@ -106,7 +106,7 @@ ORDER BY Salary DESC;
 # In ORACLE we should use Row_Number clause to pull same results
 -------------------------------------------------------------------------------------------------------------------------
 
-# Delete duplicate records of Employees in employee table
+# Identify duplicate records of Employees in employee table
 
 Below is a wrong logic with Where cluase which gives ERROR result.
 Select First_Name, Last_Name, Country, Count(*) From Employees
@@ -117,6 +117,16 @@ Select FirstName, LastName, Country, Count(*) From Employees
 Group By FirstName, LastName, Country
 Having Count(*) > 1;
 ----------------------------------------------------------------------------------------------------------------------------
+# Delete duplicate records in the table
+DELETE FROM Employees
+WHERE (FirstName, LastName, Country) IN (
+    SELECT FirstName, LastName, Country
+    FROM Employees
+    GROUP BY FirstName, LastName, Country
+    HAVING COUNT(*) > 1
+);
+
+--------------------------------------------------------------------------------------------------------------------------
 
 # Delete Duplicate records of employees based on Employee_IDs in Employee table
 
