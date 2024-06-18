@@ -120,7 +120,7 @@ Having Count(*) > 1;
 # Delete duplicate records in the table
 DELETE FROM Employees
 WHERE (FirstName, LastName, Country) IN (
-    SELECT FirstName, LastName, Country
+    SELECT FirstName, LastName, Country, Count(*)
     FROM Employees
     GROUP BY FirstName, LastName, Country
     HAVING COUNT(*) > 1
