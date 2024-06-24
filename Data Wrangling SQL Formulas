@@ -213,6 +213,7 @@ SET
 
 3. Replace the row level data having 3 different values (1, 0, Null) as (Yes, No, Unknown) respectively for a single column.
 # Create a new column with 'case when' logic based on the data from old column. Then delete the old column from the table.
+# Create new calculated column with strings from old column having integers data.
 
 ALTER TABLE [Vaccines].[dbo].[PATIENT_IDENTIFIERS_DATA]
 ADD RECOVERED_FROM_ADVERSE_EVENT VARCHAR(2);
