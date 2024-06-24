@@ -188,10 +188,35 @@ SELECT CASE
 FROM table_name;
 ---------------------------------------------------------------------------------------------------------------------------------
 # Write a query to fetch employees who joined in last 30days
+The DATEADD function subtracts 30 days from the current date, which is obtained by GETDATE(), to find employees who joined in this period.
 
 Select * From Employees
 Where JOINING_DATE >= DATEADD(DAY, -30, GETDATE());
 
-The DATEADD function subtracts 30 days from the current date, which is obtained by GETDATE(), to find employees who joined in this period.
+---------------------------------------------------------------------------------------------------------------------------------
+# Replace null values of rows with 'No' for multiple columns in which only 2 data types are available where 'Y' or N'.
+UPDATE [Vaccines].[dbo].[PATIENT_IDENTIFIERS_DATA]
+SET 
+    LIFE_THREATENING = CASE WHEN LIFE_THREATENING IS NULL THEN 'N' ELSE LIFE_THREATENING END,
+    HOSPITALIZATION = CASE WHEN HOSPITALIZATION IS NULL THEN 'N' ELSE HOSPITALIZATION END,
+	PROLONGED_HOSPITALIZATION = case when PROLONGED_HOSPITALIZATION is null then 'N' else PROLONGED_HOSPITALIZATION end,
+	DISABLITY = case when DISABLITY is null then 'N' else DISABLITY end,
+	BIRTH_DEFECT = case when BIRTH_DEFECT is null then 'N' else BIRTH_DEFECT,	
+	ALLERGIES_HISTORY = case when ALLERGIES_HISTORY is null then 'None' else ALLERGIES_HISTORY end;
 
+# Replace the row data having 3 different values (1, 0, Null) as (Yes, No, Unknown) respectively for single column 'Recovered'.
+# Create a new column with 'case when' logic based on the data from old column. Then delete the old column from the table.
+
+ALTER TABLE [Vaccines].[dbo].[PATIENT_IDENTIFIERS_DATA]
+ADD RECOVERED_FROM_ADVERSE_EVENT VARCHAR(2);
+
+UPDATE [Vaccines].[dbo].[PATIENT_IDENTIFIERS_DATA]
+SET RECOVERED_FROM_ADVERSE_EVENT = CASE 
+                    WHEN RECOVERED = 1 THEN 'Y'
+                    WHEN RECOVERED = 0 THEN 'N'
+                    ELSE NULL
+                END;
+
+ALTER TABLE [Vaccines].[dbo].[PATIENT_IDENTIFIERS_DATA]
+drop column RECOVERED;
 ----------------------------------------------------------------------------------------------------------------------------
