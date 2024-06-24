@@ -1,0 +1,17 @@
+# Rename column name in a data table. Old name should be followed by new name.
+Update the column name VAERS_ID to VAERS_Identity in the data table 'Adverse_Events_Details'.
+
+EXEC sp_rename 'dbo.Adverse_Events_Details.[VAERS_ID]', 'VAERS_Identity', 'COLUMN';
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+# Create New Data Table (Master_Data) from existing data table.
+Instead of creating new table, we should use INTO option followed by new table name.
+
+SELECT *
+INTO Master_Data
+FROM [dbo].[PATIENT_IDENTIFIERS_DATA] PID
+LEFT JOIN [dbo].[Vaccine_Manufacturer_Details] VMD
+    ON PID.[VAERS_ID] = VMD.[ID]
+LEFT JOIN [dbo].[Adverse_Events_Details] AED
+    ON PID.[VAERS_ID] = AED.[VAERS_Identity];
