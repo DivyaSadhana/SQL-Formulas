@@ -194,7 +194,14 @@ Select * From Employees
 Where JOINING_DATE >= DATEADD(DAY, -30, GETDATE());
 
 ---------------------------------------------------------------------------------------------------------------------------------
-# Replace null values of rows with 'No' for multiple columns in which only 2 data types are available where 'Y' or N'.
+1. Replace row level data based on specific single identifier.
+
+update [Vaccines].[dbo].[PATIENT_IDENTIFIERS_DATA]
+set DEATH= 'N' where DEATH is null;
+
+2. Replace null values of rows with 2 different values. 
+#Rename data as'No' for multiple columns in which only 2 data types are available where 'Y' or N'.
+
 UPDATE [Vaccines].[dbo].[PATIENT_IDENTIFIERS_DATA]
 SET 
     LIFE_THREATENING = CASE WHEN LIFE_THREATENING IS NULL THEN 'N' ELSE LIFE_THREATENING END,
@@ -204,7 +211,7 @@ SET
 	BIRTH_DEFECT = case when BIRTH_DEFECT is null then 'N' else BIRTH_DEFECT,	
 	ALLERGIES_HISTORY = case when ALLERGIES_HISTORY is null then 'None' else ALLERGIES_HISTORY end;
 
-# Replace the row data having 3 different values (1, 0, Null) as (Yes, No, Unknown) respectively for single column 'Recovered'.
+3. Replace the row level data having 3 different values (1, 0, Null) as (Yes, No, Unknown) respectively for a single column.
 # Create a new column with 'case when' logic based on the data from old column. Then delete the old column from the table.
 
 ALTER TABLE [Vaccines].[dbo].[PATIENT_IDENTIFIERS_DATA]
