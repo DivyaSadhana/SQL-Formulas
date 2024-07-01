@@ -456,3 +456,12 @@ Use SUM when you need to calculate a total (e.g., total sales amount).
 Use COUNT when you want to count occurrences (e.g., the number of male or female patients).
 Remember that SUM works with numeric values, while COUNT can work with both numeric and non-numeric data.
 ----------------------------------------------------------------------------------------------------------------------------------
+# Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+
+select patient_id, diagnosis from admissions
+group by patient_id, diagnosis having count(*) >1
+
+# using COUNT(*) counts the total number of rows for each (patient_id, diagnosis) combination.
+If a patient has been diagnosed with the same condition multiple times, the count will include all occurrences, even if they are not consecutive.
+-------------------------------------------------------------------------------------------------------------------------------------
+
