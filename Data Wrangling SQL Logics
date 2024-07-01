@@ -416,3 +416,43 @@ ORDER BY LEN(first_name), first_name;
 # The LEN(first_name) is used for sorting purposes, not as an additional output column. 
 
 --------------------------------------------------------------------------------------------------------------------------------
+
+# Show the total amount of male patients and the total amount of female patients in the patients table.
+Display the two results in the same row.
+
+Approach 1:
+SELECT 
+  (SELECT count(*) FROM patients WHERE gender='M') AS male_count, 
+  (SELECT count(*) FROM patients WHERE gender='F') AS female_count;
+
+Approach 2:-
+SELECT 
+  SUM(Gender = 'M') as male_count, 
+  SUM(Gender = 'F') AS female_count
+FROM patients
+
+Approach 3:-
+select 
+  sum(case when gender = 'M' then 1 end) as male_count,
+  sum(case when gender = 'F' then 1 end) as female_count 
+from patients;
+
+# Let’s explore the differences between SUM and COUNT in SQL:
+
+# SUM Function:
+The SUM() function calculates the total sum of numeric values in a specified column.
+It’s used when you want to find the sum of a numeric attribute (e.g., total sales, total quantity, etc.).
+For example, if you have a column called Quantity, SUM(Quantity) would give you the total quantity across all rows.
+Null values are ignored when using SUM.
+
+# COUNT Function:
+The COUNT() function counts the number of rows that match a specified condition.
+It’s used to tally rows based on a criterion (e.g., counting male or female patients).
+For example, COUNT(*) counts all rows in a table, while COUNT(column_name) counts non-null values in a specific column.
+Null values are not counted when using COUNT.
+
+# When to Use Each:
+Use SUM when you need to calculate a total (e.g., total sales amount).
+Use COUNT when you want to count occurrences (e.g., the number of male or female patients).
+Remember that SUM works with numeric values, while COUNT can work with both numeric and non-numeric data.
+----------------------------------------------------------------------------------------------------------------------------------
