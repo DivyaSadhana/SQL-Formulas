@@ -404,4 +404,15 @@ SET RECOVERED_FROM_ADVERSE_EVENT = CASE
 ALTER TABLE [Vaccines].[dbo].[PATIENT_IDENTIFIERS_DATA]
 drop column RECOVERED;
 ----------------------------------------------------------------------------------------------------------------------------
+# Display every patient's first_name. Order the list by the length of each name and then by alphabetically. 
 
+SELECT first_name FROM patients
+ORDER BY LEN(first_name), first_name;
+
+# ORDER BY LEN(first_name), first_name: The ORDER BY clause sorts the results. Here’s the logic:
+# First, it sorts by the length of first_name using LEN(first_name).
+# Then, if there are multiple names with the same length, it sorts them alphabetically by first_name.
+# So, even though you have two columns in the SELECT clause, the final output only includes the first_name. 
+# The LEN(first_name) is used for sorting purposes, not as an additional output column. 
+
+--------------------------------------------------------------------------------------------------------------------------------
