@@ -496,3 +496,19 @@ Keep in mind that using UNION ALL does not enforce any constraints or relationsh
 If you need to join data based on specific conditions, you would typically use INNER JOIN, LEFT JOIN, or other types of joins.
 
 ------------------------------------------------------------------------------------------------------------------------------------
+Let’s explore the differences between UNION ALL and FULL OUTER JOIN in SQL:
+
+# UNION ALL:
+The UNION ALL operator combines the result sets of two or more SELECT statements into a single result set.
+It concatenates rows from different tables or queries, allowing duplicates.
+The number of columns selected from each table can be different.
+Data types of corresponding columns selected from each table can also differ.
+It does not remove duplicate rows; all rows are included in the output1.
+
+# FULL OUTER JOIN:
+A FULL OUTER JOIN is a type of join that includes unmatched rows from both joined tables.
+It combines the results of a LEFT JOIN and a RIGHT JOIN.
+The output includes matching rows as well as non-matching rows from both tables.
+Columns that exist only in one dataset are displayed without overlaying positions.
+It ensures that all rows from both tables are represented in the result set23.
+In summary, UNION ALL combines data into new rows, allowing duplicates, while FULL OUTER JOIN combines data into new columns, including unmatched rows from both tables.
