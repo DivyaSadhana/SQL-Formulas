@@ -465,3 +465,34 @@ group by patient_id, diagnosis having count(*) >1
 If a patient has been diagnosed with the same condition multiple times, the count will include all occurrences, even if they are not consecutive.
 -------------------------------------------------------------------------------------------------------------------------------------
 
+# Show the city and the total number of patients in the city.
+Order from most to least patients and then by city name ascending.
+
+SELECT
+  city,
+  COUNT(*) AS num_patients
+FROM patients
+GROUP BY city
+ORDER BY num_patients DESC, city asc;
+
+-------------------------------------------------------------------------------------------------------------------------
+# Show first name, last name and role of every person that is either patient or doctor.
+The roles are either "Patient" or "Doctor"
+
+SELECT first_name, last_name, 'Patient' as role FROM patients
+UNION ALL
+SELECT first_name, last_name, 'Doctor' FROM doctors;
+
+# Explanation:
+This query combines data from two tables, patients and doctors.
+The UNION ALL operator is used to concatenate the results of the two SELECT statements.
+Each SELECT statement retrieves the first_name and last_name columns from its respective table.
+Additionally, a constant value 'Patient' is included as the role for rows from the patients table, and 'Doctor' for rows from the doctors table.
+Since both SELECT statements have the same number of columns and compatible data types, they can be combined using UNION ALL.
+
+#Result:
+The output will be a single result set containing all the rows from both tables, with an additional role column indicating whether the record corresponds to a patient or a doctor.
+Keep in mind that using UNION ALL does not enforce any constraints or relationships between the tables. It simply concatenates the rows from both tables. 
+If you need to join data based on specific conditions, you would typically use INNER JOIN, LEFT JOIN, or other types of joins.
+
+------------------------------------------------------------------------------------------------------------------------------------
